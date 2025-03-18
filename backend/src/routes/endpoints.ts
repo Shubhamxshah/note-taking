@@ -22,10 +22,8 @@ noteRouter.post("/extract_md", upload.single("file"), (req, res) => {
     res.status(400).json({message: "No file uploaded"});
     return;
   }
-  
-  const filePath = path.join("uploads", req.file.filename); 
 
-  fs.readFile(filePath, "utf8", (err, data) => {
+  fs.readFile(`uploads/${req.file.filename}`, "utf8", (err, data) => {
     if (err) {
       console.error("Error reading file: ", err);
       res.status(500).json({error: "error reading this file"});
