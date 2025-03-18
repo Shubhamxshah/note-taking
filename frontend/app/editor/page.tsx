@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Showdown from "showdown"; // ✅ Correct import
 
 export default function Home() {
-  const [markdown, setMarkdown] = useState("# Hello Markdown");
+  const [markdown, setMarkdown] = useState<string>("# Hello Markdown");
 
 const converter = new Showdown.Converter();
 

@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { authRouter } from "./routes/auth";
 import cookieParser from "cookie-parser";
-import { noteRouter } from "./routes/blog";
+import { noteRouter } from "./routes/endpoints";
 
 const app = express();
 
