@@ -17,10 +17,9 @@ import { useForm } from "react-hook-form";
 import { toast, Toaster } from "sonner";
 import { z } from "zod";
 import axios from "axios";
+import { useUser } from "./hooks/md-context";
 
 const Backend_url = process.env.Backend_url || "http://localhost:8080";
-
-
 
 const formSchema = z.object({
   file: z
@@ -35,6 +34,7 @@ const formSchema = z.object({
 
 export default function Home() {
   const router = useRouter();
+  const {setMarkdown} = useUser();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,6 +59,7 @@ export default function Home() {
       .then((response) => {
         console.log(response)
         toast("file uploaded successfully");
+        setMarkdown(response.data.content);
         router.push("/editor");
       })
       .catch(() => {
