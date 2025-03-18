@@ -1,11 +1,12 @@
 "use client";
 
 import { Textarea } from "@/components/ui/textarea";
-import React, { useState } from "react";
+import React from "react";
 import Showdown from "showdown"; // ✅ Correct import
+import { useUser } from "../hooks/md-context";
 
 export default function Home() {
-  const [markdown, setMarkdown] = useState<string>("# Hello Markdown");
+  const {markdown, setMarkdown} = useUser();
 
 const converter = new Showdown.Converter();
 
